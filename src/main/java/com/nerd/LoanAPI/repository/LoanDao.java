@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface LoanDao extends JpaRepository<Loan, Integer> {
 
     List<Loan> findByUserIdOrderByInterestRateDesc(Integer userId);
+    List<Loan> findByUserIdOrderByOutstandingBalanceDesc(Integer userId);
     List<Loan> findByUserIdOrderByContributionDesc(Integer userId);
     List<Loan> findByUserIdOrderByName(Integer userId);
     Optional<Loan> findByIdAndUserId(Integer id, Integer userId);

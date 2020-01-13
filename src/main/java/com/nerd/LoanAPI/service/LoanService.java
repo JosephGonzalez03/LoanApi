@@ -28,8 +28,14 @@ public class LoanService {
             case INTEREST_RATE:
                 loans = loanDao.findByUserIdOrderByInterestRateDesc(userId);
                 break;
+            case OUTSTANDING_BALANCE:
+                loans = loanDao.findByUserIdOrderByOutstandingBalanceDesc(userId);
+                break;
             case CONTRIBUTION:
                 loans = loanDao.findByUserIdOrderByContributionDesc(userId);
+                break;
+            case NAME:
+                loans = loanDao.findByUserIdOrderByName(userId);
                 break;
             default:
                 loans = loanDao.findByUserIdOrderByName(userId);

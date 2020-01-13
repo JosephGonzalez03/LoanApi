@@ -1,5 +1,5 @@
 package com.nerd.LoanAPI.model;
 
 public enum OrderBy {
-    INTEREST_RATE, CONTRIBUTION, DEFAULT
+    NAME, INTEREST_RATE, OUTSTANDING_BALANCE, CONTRIBUTION, DEFAULT
 }
