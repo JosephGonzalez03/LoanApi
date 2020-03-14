@@ -96,8 +96,8 @@ public class LoanServiceIntegrationTest {
         b.setContribution(BigDecimal.ONE);
         b.setOutstandingBalance(BigDecimal.valueOf(2000.00));
 
-        expected.add(b);
         expected.add(a);
+        expected.add(b);
 
         Assert.assertEquals(found.get(0), expected.get(0));
         Assert.assertEquals(found.get(1), expected.get(1));
