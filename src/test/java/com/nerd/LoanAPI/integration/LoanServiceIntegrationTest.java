@@ -80,22 +80,6 @@ public class LoanServiceIntegrationTest {
     public void whenFindByUserIdOrderByContribution_thenLoanListShouldBeReturned() {
         List<Loan> found = loanDao.findByUserIdOrderByContributionDesc(1);
 
-        Joe.setId(1);
-
-        a.setId(1);
-        a.setName("a");
-        a.setUser(Joe);
-        a.setInterestRate(BigDecimal.valueOf(5.00));
-        a.setContribution(BigDecimal.TEN);
-        a.setOutstandingBalance(BigDecimal.valueOf(1000.00));
-
-        b.setId(2);
-        b.setName("b");
-        b.setUser(Joe);
-        b.setInterestRate(BigDecimal.valueOf(1.00));
-        b.setContribution(BigDecimal.ONE);
-        b.setOutstandingBalance(BigDecimal.valueOf(2000.00));
-
         expected.add(a);
         expected.add(b);
 
