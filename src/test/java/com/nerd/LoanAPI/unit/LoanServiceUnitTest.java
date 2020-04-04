@@ -1,4 +1,4 @@
-package com.nerd.LoanAPI.integration;
+package com.nerd.LoanAPI.unit;
 
 import com.nerd.LoanAPI.model.Loan;
 import com.nerd.LoanAPI.model.OrderBy;
@@ -22,7 +22,7 @@ import java.util.List;
 import static  org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
-public class LoanServiceIntegrationTest {
+public class LoanServiceUnitTest {
 
     @TestConfiguration
     static class LoanServiceTestContextConfiguration {
