@@ -8,11 +8,9 @@ import com.nerd.LoanAPI.repository.UserDao;
 import com.nerd.LoanAPI.service.LoanService;
 import org.junit.*;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -21,24 +19,16 @@ import java.util.List;
 
 import static  org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class LoanServiceUnitTest {
 
-    @TestConfiguration
-    static class LoanServiceTestContextConfiguration {
-        @Bean
-        LoanService loanService() {
-            return new LoanService();
-        }
-    }
-
-    @Autowired
+    @InjectMocks
     private LoanService loanService;
 
-    @MockBean
+    @Mock
     private LoanDao loanDao;
 
-    @MockBean
+    @Mock
     private UserDao userDao;
 
     User Joe = new User();
@@ -82,8 +72,6 @@ public class LoanServiceUnitTest {
 
         Assert.assertEquals(found.get(0), expected.get(0));
         Assert.assertEquals(found.get(1), expected.get(1));
-
-        verify(loanDao, times(1)).findByUserIdOrderByInterestRateDesc(1);
     }
 
     @Test
