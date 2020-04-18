@@ -72,6 +72,8 @@ public class LoanServiceUnitTest {
 
         Assert.assertEquals(found.get(0), expected.get(0));
         Assert.assertEquals(found.get(1), expected.get(1));
+
+        verify(loanDao, times(1)).findByUserIdOrderByInterestRateDesc(1);
     }
 
     @Test
