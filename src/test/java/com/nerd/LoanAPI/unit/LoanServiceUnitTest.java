@@ -168,5 +168,6 @@ public class LoanServiceUnitTest {
 
         Assertions.assertThatThrownBy(() -> loanService.addLoan(1,a)).isInstanceOf(UserNotFoundException.class);
         verify(userDao, times(1)).findById(1);
+        verify(loanDao, times(0)).save(a);
     }
 }
