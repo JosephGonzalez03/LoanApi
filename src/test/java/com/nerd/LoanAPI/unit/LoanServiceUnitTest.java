@@ -1,11 +1,14 @@
 package com.nerd.LoanAPI.unit;
 
+import com.nerd.LoanAPI.CustomException.LoanNotFoundException;
+import com.nerd.LoanAPI.CustomException.UserNotFoundException;
 import com.nerd.LoanAPI.model.Loan;
 import com.nerd.LoanAPI.model.OrderBy;
 import com.nerd.LoanAPI.model.User;
 import com.nerd.LoanAPI.repository.LoanDao;
 import com.nerd.LoanAPI.repository.UserDao;
 import com.nerd.LoanAPI.service.LoanService;
+import org.assertj.core.api.Assertions;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -16,6 +19,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static  org.mockito.Mockito.*;
 
@@ -122,5 +126,47 @@ public class LoanServiceUnitTest {
         Assert.assertEquals(expected.get(1), found.get(1));
 
         verify(loanDao, times(1)).findByUserIdOrderByName(1);
+    }
+
+    @Test
+    public void getLoan_ExistentUserAndLoanIdsAsParams_ReturnsLoanWithCorrespondingIds() {
+        when(loanDao.findByIdAndUserId(1,1))
+                .thenReturn(Optional.of(a));
+
+        Loan found = loanService.getLoan(1,1);
+
+        Assert.assertEquals(a, found);
+        verify(loanDao, times(1)).findByIdAndUserId(1,1);
+    }
+
+    @Test
+    public void getLoan_ExistentUserIdAs1stParam_NonexistentLoanIdAs2ndParams_ReturnsLoanNotFoundException() {
+        when(loanDao.findByIdAndUserId(5,1))
+                .thenReturn(Optional.empty());
+
+        Assertions.assertThatThrownBy(() -> loanService.getLoan(1,5)).isInstanceOf(LoanNotFoundException.class);
+        verify(loanDao, times(1)).findByIdAndUserId(5,1);
+    }
+
+    @Test
+    public void addLoan_PositiveIntegerAs1stParam_ValidLoanAs2ndParam_ReturnsNothing() {
+        when(userDao.findById(1))
+                .thenReturn(Optional.of(Joe));
+        when(loanDao.save(a))
+                .thenReturn(a);
+
+        loanService.addLoan(1, a);
+
+        verify(userDao, times(1)).findById(1);
+        verify(loanDao, times(1)).save(a);
+    }
+
+    @Test
+    public void addLoan_NonExistentUserIdAs1stParam_ValidLoan2ndParams_ReturnsLoanNotFoundException() {
+        when(userDao.findById(1))
+                .thenReturn(Optional.empty());
+
+        Assertions.assertThatThrownBy(() -> loanService.addLoan(1,a)).isInstanceOf(UserNotFoundException.class);
+        verify(userDao, times(1)).findById(1);
     }
 }
