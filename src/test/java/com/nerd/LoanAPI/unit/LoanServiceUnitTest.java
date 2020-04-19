@@ -70,8 +70,8 @@ public class LoanServiceUnitTest {
         expected.add(a);
         expected.add(b);
 
-        Assert.assertEquals(found.get(0), expected.get(0));
-        Assert.assertEquals(found.get(1), expected.get(1));
+        Assert.assertEquals(expected.get(0), found.get(0));
+        Assert.assertEquals(expected.get(1), found.get(1));
 
         verify(loanDao, times(1)).findByUserIdOrderByInterestRateDesc(1);
     }
@@ -86,8 +86,8 @@ public class LoanServiceUnitTest {
         expected.add(b);
         expected.add(a);
 
-        Assert.assertEquals(found.get(0), expected.get(0));
-        Assert.assertEquals(found.get(1), expected.get(1));
+        Assert.assertEquals(expected.get(0), found.get(0));
+        Assert.assertEquals(expected.get(1), found.get(1));
 
         verify(loanDao, times(1)).findByUserIdOrderByOutstandingBalanceDesc(1);
     }
@@ -102,8 +102,8 @@ public class LoanServiceUnitTest {
         expected.add(a);
         expected.add(b);
 
-        Assert.assertEquals(found.get(0), expected.get(0));
-        Assert.assertEquals(found.get(1), expected.get(1));
+        Assert.assertEquals(expected.get(0), found.get(0));
+        Assert.assertEquals(expected.get(1), found.get(1));
 
         verify(loanDao, times(1)).findByUserIdOrderByContributionDesc(1);
     }
@@ -118,8 +118,8 @@ public class LoanServiceUnitTest {
         expected.add(a);
         expected.add(b);
 
-        Assert.assertEquals(found.get(0), expected.get(0));
-        Assert.assertEquals(found.get(1), expected.get(1));
+        Assert.assertEquals(expected.get(0), found.get(0));
+        Assert.assertEquals(expected.get(1), found.get(1));
 
         verify(loanDao, times(1)).findByUserIdOrderByName(1);
     }
