@@ -113,7 +113,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void getAll_PositiveIntegerAs1stParam_NameOrderByEnumAs2ndParam_ReturnsLoanListOrderedAlphabetically() {
+    public void getAll_ValidUserIdAs1stParam_NameOrderByEnumAs2ndParam_ReturnsLoanListOrderedAlphabetically() {
         when(loanDao.findByUserIdOrderByName(1))
                 .thenReturn(Arrays.asList(a, b));
 
@@ -129,7 +129,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void getLoan_ExistentUserAndLoanIdsAsParams_ReturnsLoanWithCorrespondingIds() {
+    public void getLoan_ValidUserAndLoanIdsAsParams_ReturnsLoanWithCorrespondingIds() {
         when(loanDao.findByIdAndUserId(1,1))
                 .thenReturn(Optional.of(a));
 
@@ -140,7 +140,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void getLoan_ExistentUserIdAs1stParam_NonexistentLoanIdAs2ndParams_ReturnsLoanNotFoundException() {
+    public void getLoan_ValidUserIdAs1stParam_NonexistentLoanIdAs2ndParams_ReturnsLoanNotFoundException() {
         when(loanDao.findByIdAndUserId(5,1))
                 .thenReturn(Optional.empty());
 
@@ -149,7 +149,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void addLoan_PositiveIntegerAs1stParam_ValidLoanAs2ndParam_ReturnsNothing() {
+    public void addLoan_ValidUserIdAs1stParam_ValidLoanAs2ndParam_ReturnsNothing() {
         when(userDao.findById(1))
                 .thenReturn(Optional.of(Joe));
         when(loanDao.save(a))
