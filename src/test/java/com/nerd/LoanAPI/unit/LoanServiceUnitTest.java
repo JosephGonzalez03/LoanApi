@@ -229,4 +229,26 @@ public class LoanServiceUnitTest {
         verify(original, never()).setContribution(updated.getContribution());
         verify(loanDao, never()).save(a);
     }
+
+    @Test
+    public void deleteLoan_ValidUserIdAs1stParam_ValidLoanIdAs2ndParam_ReturnsNothing() {
+        when(loanDao.findByIdAndUserId(1,1))
+                .thenReturn(Optional.of(a));
+        doNothing().when(loanDao).delete(a);
+
+        loanService.deleteLoan(1,1);
+
+        verify(loanDao, times(1)).findByIdAndUserId(1,1);
+        verify(loanDao, times(1)).delete(a);
+    }
+
+    @Test
+    public void deleteLoan_ValidUserIdAs1stParam_NonexistentLoanIdAs2ndParam_ReturnsLoanNotFoundException() {
+        when(loanDao.findByIdAndUserId(1,1))
+                .thenReturn(Optional.empty());
+
+        Assertions.assertThatThrownBy(() -> loanService.deleteLoan(1,1)).isInstanceOf(LoanNotFoundException.class);
+        verify(loanDao, times(1)).findByIdAndUserId(1,1);
+        verify(loanDao, never()).delete(a);
+    }
 }
