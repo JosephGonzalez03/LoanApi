@@ -130,7 +130,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void getLoan_ValidUserAndLoanIdsAsParams_ReturnsLoanWithCorrespondingIds() {
+    public void getLoan_ValidUserIdAs1stParam_ValidLoanIdAs2ndParam_ReturnsLoanWithCorrespondingIds() {
         when(loanDao.findByIdAndUserId(1,1))
                 .thenReturn(Optional.of(a));
 
