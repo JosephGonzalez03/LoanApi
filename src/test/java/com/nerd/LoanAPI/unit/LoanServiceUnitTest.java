@@ -163,7 +163,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void addLoan_NonExistentUserIdAs1stParam_ValidLoan2ndParams_ReturnsLoanNotFoundException() {
+    public void addLoan_NonexistentUserIdAs1stParam_ValidLoan2ndParams_ReturnsLoanNotFoundException() {
         when(userDao.findById(1))
                 .thenReturn(Optional.empty());
 
@@ -203,7 +203,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void updateLoan_ValidUserIdAs1stParam_NonExistentLoanIdAs2ndParam_ValidLoanAs3rdParam_ReturnsLoanNotFoundException() {
+    public void updateLoan_ValidUserIdAs1stParam_NonexistentLoanIdAs2ndParam_ValidLoanAs3rdParam_ReturnsLoanNotFoundException() {
         Loan original = Mockito.spy(new Loan());
         original.setId(1);
         original.setName("Home Loan 1");
