@@ -218,7 +218,7 @@ public class LoanServiceUnitTest {
         updated.setContribution(BigDecimal.ONE);
         updated.setOutstandingBalance(BigDecimal.valueOf(2000.00));
 
-        when(loanDao.findByIdAndUserId(5,1))
+        when(loanDao.findByIdAndUserId(1,1))
                 .thenReturn(Optional.empty());
 
         Assertions.assertThatThrownBy(() -> loanService.updateLoan(1,1, updated)).isInstanceOf(LoanNotFoundException.class);
