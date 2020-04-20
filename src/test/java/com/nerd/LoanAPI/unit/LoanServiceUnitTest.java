@@ -66,7 +66,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void getAll_PositiveIntegerAs1stParam_InterestRateOrderByEnumAs2ndParam_ReturnsLoanListInOrderOfDescendingInterestRate() {
+    public void getAll_ValidUserIdAs1stParam_InterestRateOrderByEnumAs2ndParam_ReturnsLoanListInOrderOfDescendingInterestRate() {
         when(loanDao.findByUserIdOrderByInterestRateDesc(1))
                 .thenReturn(Arrays.asList(a, b));
 
@@ -82,7 +82,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void getAll_PositiveIntegerAs1stParam_OutstandingBalanceOrderByEnumAs2ndParam_ReturnsLoanListInOrderOfDescendingOutstandingBalance() {
+    public void getAll_ValidUserIdAs1stParam_OutstandingBalanceOrderByEnumAs2ndParam_ReturnsLoanListInOrderOfDescendingOutstandingBalance() {
         when(loanDao.findByUserIdOrderByOutstandingBalanceDesc(1))
                 .thenReturn(Arrays.asList(b, a));
 
@@ -98,7 +98,7 @@ public class LoanServiceUnitTest {
     }
 
     @Test
-    public void getAll_PositiveIntegerAs1stParam_ContributionOrderByEnumAs2ndParam_ReturnsLoanListInOrderOfDescendingContribution() {
+    public void getAll_ValidUserIdAs1stParam_ContributionOrderByEnumAs2ndParam_ReturnsLoanListInOrderOfDescendingContribution() {
         when(loanDao.findByUserIdOrderByContributionDesc(1))
                 .thenReturn(Arrays.asList(a, b));
 
