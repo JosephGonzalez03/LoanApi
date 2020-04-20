@@ -13,6 +13,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
@@ -168,6 +169,64 @@ public class LoanServiceUnitTest {
 
         Assertions.assertThatThrownBy(() -> loanService.addLoan(1,a)).isInstanceOf(UserNotFoundException.class);
         verify(userDao, times(1)).findById(1);
-        verify(loanDao, times(0)).save(a);
+        verify(loanDao, never()).save(a);
+    }
+
+    @Test
+    public void updateLoan_ValidUserIdAs1stParam_ValidLoanIdAs2ndParam_ValidLoanAs3rdParam_ReturnsNothing() {
+        Loan original = Mockito.spy(new Loan());
+        original.setId(1);
+        original.setName("Home Loan 1");
+        original.setUser(Joe);
+        original.setInterestRate(BigDecimal.valueOf(5.00));
+        original.setContribution(BigDecimal.TEN);
+        original.setOutstandingBalance(BigDecimal.valueOf(1000.00));
+
+        Loan updated = new Loan();
+        updated.setName("Home Loan 2");
+        updated.setInterestRate(BigDecimal.valueOf(10.00));
+        updated.setContribution(BigDecimal.ONE);
+        updated.setOutstandingBalance(BigDecimal.valueOf(2000.00));
+
+        when(loanDao.findByIdAndUserId(1,1))
+                .thenReturn(Optional.of(original));
+        when(loanDao.save(original))
+                .thenReturn(original);
+
+        loanService.updateLoan(1,1,updated);
+
+        verify(original, times(1)).setName(updated.getName());
+        verify(original, times(1)).setInterestRate(updated.getInterestRate());
+        verify(original, times(1)).setOutstandingBalance(updated.getOutstandingBalance());
+        verify(original, times(1)).setContribution(updated.getContribution());
+        verify(loanDao, times(1)).save(original);
+    }
+
+    @Test
+    public void updateLoan_ValidUserIdAs1stParam_NonExistentLoanIdAs2ndParam_ValidLoanAs3rdParam_ReturnsLoanNotFoundException() {
+        Loan original = Mockito.spy(new Loan());
+        original.setId(1);
+        original.setName("Home Loan 1");
+        original.setUser(Joe);
+        original.setInterestRate(BigDecimal.valueOf(5.00));
+        original.setContribution(BigDecimal.TEN);
+        original.setOutstandingBalance(BigDecimal.valueOf(1000.00));
+
+        Loan updated = new Loan();
+        updated.setName("Home Loan 2");
+        updated.setInterestRate(BigDecimal.valueOf(10.00));
+        updated.setContribution(BigDecimal.ONE);
+        updated.setOutstandingBalance(BigDecimal.valueOf(2000.00));
+
+        when(loanDao.findByIdAndUserId(5,1))
+                .thenReturn(Optional.empty());
+
+        Assertions.assertThatThrownBy(() -> loanService.updateLoan(1,1, updated)).isInstanceOf(LoanNotFoundException.class);
+        verify(loanDao, times(1)).findByIdAndUserId(1,1);
+        verify(original, never()).setName(updated.getName());
+        verify(original, never()).setInterestRate(updated.getInterestRate());
+        verify(original, never()).setOutstandingBalance(updated.getOutstandingBalance());
+        verify(original, never()).setContribution(updated.getContribution());
+        verify(loanDao, never()).save(a);
     }
 }
