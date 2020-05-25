@@ -1,4 +1,4 @@
-package com.nerd.LoanAPI.unit.LoanService;
+package com.nerd.LoanAPI.unit.LoanService.tdd;
 
 import com.nerd.LoanAPI.CustomException.LoanNotFoundException;
 import com.nerd.LoanAPI.model.Loan;
