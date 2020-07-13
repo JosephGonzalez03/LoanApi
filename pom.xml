@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.nerd</groupId>
-    <artifactId>LoanAPI</artifactId>
+    <artifactId>loan-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>LoanAPI</name>
     <description>Demo project for Spring Boot</description>
