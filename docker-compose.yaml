@@ -1,0 +1,28 @@
+version: "3.4"
+
+services:
+  postgres-db:
+    container_name: postgres
+    image: library/postgres:alpine
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "admin"
+    volumes:
+      - type: volume
+        source: my-postgres-data
+        target: /var/lib/postgresql/data
+        read_only: false
+    ports:
+    - "5432:5432"
+
+  loan-api:
+    container_name: loan-api
+    image: docker.io/library/loan-api:0.0.1-SNAPSHOT
+    depends_on:
+      - postgres-db
+    ports:
+    - "8080:8080"
+
+volumes:
+  my-postgres-data:
