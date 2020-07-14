@@ -22,7 +22,7 @@ public class LoanService {
     private LoanDao loanDao;
 
     public List<Loan> getAll(Integer userId, OrderBy orderBy) {
-        List<Loan> loans;
+        List<Loan> loans = null;
 
         switch (orderBy) {
             case INTEREST_RATE:
@@ -37,8 +37,6 @@ public class LoanService {
             case NAME:
                 loans = loanDao.findByUserIdOrderByName(userId);
                 break;
-            default:
-                loans = loanDao.findByUserIdOrderByName(userId);
         }
         return loans;
     }
