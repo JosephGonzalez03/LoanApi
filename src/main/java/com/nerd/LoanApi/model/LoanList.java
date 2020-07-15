@@ -1,4 +1,4 @@
-package com.nerd.LoanAPI.model;
+package com.nerd.LoanApi.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

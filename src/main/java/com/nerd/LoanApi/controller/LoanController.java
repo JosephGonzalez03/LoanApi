@@ -1,9 +1,9 @@
-package com.nerd.LoanAPI.controller;
+package com.nerd.LoanApi.controller;
 
-import com.nerd.LoanAPI.model.Loan;
-import com.nerd.LoanAPI.model.LoanList;
-import com.nerd.LoanAPI.model.OrderBy;
-import com.nerd.LoanAPI.service.LoanService;
+import com.nerd.LoanApi.model.Loan;
+import com.nerd.LoanApi.model.LoanList;
+import com.nerd.LoanApi.model.OrderBy;
+import com.nerd.LoanApi.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

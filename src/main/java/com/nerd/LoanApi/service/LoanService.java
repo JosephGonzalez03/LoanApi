@@ -1,12 +1,11 @@
-package com.nerd.LoanAPI.service;
+package com.nerd.LoanApi.service;
 
-import com.nerd.LoanAPI.CustomException.LoanNotFoundException;
-import com.nerd.LoanAPI.CustomException.UserNotFoundException;
-import com.nerd.LoanAPI.model.Loan;
-import com.nerd.LoanAPI.model.OrderBy;
-import com.nerd.LoanAPI.model.User;
-import com.nerd.LoanAPI.repository.LoanDao;
-import com.nerd.LoanAPI.repository.UserDao;
+import com.nerd.LoanApi.CustomException.LoanNotFoundException;
+import com.nerd.LoanApi.CustomException.UserNotFoundException;
+import com.nerd.LoanApi.model.Loan;
+import com.nerd.LoanApi.model.OrderBy;
+import com.nerd.LoanApi.repository.LoanDao;
+import com.nerd.LoanApi.repository.UserDao;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

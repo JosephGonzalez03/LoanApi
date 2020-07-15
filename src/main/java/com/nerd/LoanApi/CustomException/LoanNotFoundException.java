@@ -1,4 +1,4 @@
-package com.nerd.LoanAPI.CustomException;
+package com.nerd.LoanApi.CustomException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

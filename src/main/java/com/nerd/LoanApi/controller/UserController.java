@@ -1,12 +1,9 @@
-package com.nerd.LoanAPI.controller;
+package com.nerd.LoanApi.controller;
 
-import com.nerd.LoanAPI.CustomException.UserNotFoundException;
-import com.nerd.LoanAPI.model.Loan;
-import com.nerd.LoanAPI.model.User;
-import com.nerd.LoanAPI.repository.LoanDao;
-import com.nerd.LoanAPI.repository.UserDao;
+import com.nerd.LoanApi.CustomException.UserNotFoundException;
+import com.nerd.LoanApi.model.User;
+import com.nerd.LoanApi.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

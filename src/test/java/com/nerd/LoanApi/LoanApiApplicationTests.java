@@ -1,4 +1,4 @@
-package com.nerd.LoanAPI;
+package com.nerd.LoanApi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

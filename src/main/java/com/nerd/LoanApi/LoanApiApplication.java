@@ -1,4 +1,4 @@
-package com.nerd.LoanAPI;
+package com.nerd.LoanApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

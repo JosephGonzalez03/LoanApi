@@ -1,10 +1,10 @@
-package com.nerd.LoanAPI.unit.LoanService;
+package com.nerd.LoanApi.unit.LoanService.tdd;
 
-import com.nerd.LoanAPI.CustomException.LoanNotFoundException;
-import com.nerd.LoanAPI.model.Loan;
-import com.nerd.LoanAPI.model.User;
-import com.nerd.LoanAPI.repository.LoanDao;
-import com.nerd.LoanAPI.service.LoanService;
+import com.nerd.LoanApi.CustomException.LoanNotFoundException;
+import com.nerd.LoanApi.model.Loan;
+import com.nerd.LoanApi.model.User;
+import com.nerd.LoanApi.repository.LoanDao;
+import com.nerd.LoanApi.service.LoanService;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;

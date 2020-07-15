@@ -1,6 +1,5 @@
-package com.nerd.LoanAPI.model;
+package com.nerd.LoanApi.model;
 
-import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

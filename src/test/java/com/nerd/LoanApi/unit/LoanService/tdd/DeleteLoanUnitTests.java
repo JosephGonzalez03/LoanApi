@@ -1,12 +1,11 @@
-package com.nerd.LoanAPI.unit.LoanService;
+package com.nerd.LoanApi.unit.LoanService.tdd;
 
-import com.nerd.LoanAPI.CustomException.LoanNotFoundException;
-import com.nerd.LoanAPI.model.Loan;
-import com.nerd.LoanAPI.model.User;
-import com.nerd.LoanAPI.repository.LoanDao;
-import com.nerd.LoanAPI.service.LoanService;
+import com.nerd.LoanApi.CustomException.LoanNotFoundException;
+import com.nerd.LoanApi.model.Loan;
+import com.nerd.LoanApi.model.User;
+import com.nerd.LoanApi.repository.LoanDao;
+import com.nerd.LoanApi.service.LoanService;
 import org.assertj.core.api.Assertions;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,10 +17,9 @@ import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetLoanUnitTests {
+public class DeleteLoanUnitTests {
     @InjectMocks
     private LoanService loanService;
 
@@ -44,22 +42,24 @@ public class GetLoanUnitTests {
     }
 
     @Test
-    public void getLoan_ExistentUserIdAs1stParam_ExistentLoanIdAs2ndParam_ReturnsLoanWithCorrespondingIds() {
+    public void deleteLoan_ExistentUserIdAs1stParam_ExistentLoanIdAs2ndParam_ReturnsNothing() {
         when(loanDao.findByIdAndUserId(1,1))
                 .thenReturn(Optional.of(validLoan));
+        doNothing().when(loanDao).delete(validLoan);
 
-        Loan found = loanService.getLoan(1,1);
+        loanService.deleteLoan(1,1);
 
-        Assert.assertEquals(validLoan, found);
         verify(loanDao, times(1)).findByIdAndUserId(1,1);
+        verify(loanDao, times(1)).delete(validLoan);
     }
 
     @Test
-    public void getLoan_ExistentUserIdAs1stParam_NonexistentLoanIdAs2ndParams_ReturnsLoanNotFoundException() {
-        when(loanDao.findByIdAndUserId(5,1))
+    public void deleteLoan_ExistentUserIdAs1stParam_NonexistentLoanIdAs2ndParam_ReturnsLoanNotFoundException() {
+        when(loanDao.findByIdAndUserId(1,1))
                 .thenReturn(Optional.empty());
 
-        Assertions.assertThatThrownBy(() -> loanService.getLoan(1,5)).isInstanceOf(LoanNotFoundException.class);
-        verify(loanDao, times(1)).findByIdAndUserId(5,1);
+        Assertions.assertThatThrownBy(() -> loanService.deleteLoan(1,1)).isInstanceOf(LoanNotFoundException.class);
+        verify(loanDao, times(1)).findByIdAndUserId(1,1);
+        verify(loanDao, never()).delete(validLoan);
     }
 }
