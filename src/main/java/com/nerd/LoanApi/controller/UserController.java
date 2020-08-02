@@ -1,11 +1,13 @@
 package com.nerd.LoanApi.controller;
 
 import com.nerd.LoanApi.CustomException.UserNotFoundException;
-import com.nerd.LoanApi.model.User;
+import com.nerd.LoanApi.model.contract.UserResponseBody;
+import com.nerd.LoanApi.model.provider.User;
 import com.nerd.LoanApi.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -15,13 +17,17 @@ public class UserController {
     private UserDao dao;
 
     @GetMapping("")
-    public List<User> getAll() {
-        return dao.findAll();
+    public List<UserResponseBody> getAll() {
+        List<User> users = dao.findAll();
+        List<UserResponseBody> userResponseBodies = new ArrayList<>();
+
+        users.forEach(user -> userResponseBodies.add(new UserResponseBody(user)));
+        return userResponseBodies;
     }
 
     @GetMapping("/{userId}")
-    User getById(@PathVariable("userId") Integer userId) {
-        return dao.findById(userId).orElseThrow(UserNotFoundException::new);
+    UserResponseBody getById(@PathVariable("userId") Integer userId) {
+        return new UserResponseBody(dao.findById(userId).orElseThrow(UserNotFoundException::new));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.nerd.LoanApi.model;
+package com.nerd.LoanApi.model.provider;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

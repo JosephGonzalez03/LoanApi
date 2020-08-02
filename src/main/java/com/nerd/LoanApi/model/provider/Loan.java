@@ -1,5 +1,6 @@
-package com.nerd.LoanApi.model;
+package com.nerd.LoanApi.model.provider;
 
+import com.nerd.LoanApi.model.contract.LoanRequestBody;
 import lombok.*;
 
 import javax.persistence.*;
@@ -38,4 +39,12 @@ public class Loan implements Serializable {
     @Column(name = "contribution")
     private BigDecimal contribution;
 
+    public Loan (Integer userId, LoanRequestBody loanRequestBody) {
+        this.user = new User();
+        this.user.setId(userId);
+        this.name = loanRequestBody.getName();
+        this.interestRate = loanRequestBody.getInterestRate();
+        this.outstandingBalance = loanRequestBody.getOutstandingBalance();
+        this.contribution = loanRequestBody.getContribution();
+    }
 }
