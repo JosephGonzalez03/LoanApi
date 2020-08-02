@@ -2,8 +2,8 @@ package com.nerd.LoanApi.service;
 
 import com.nerd.LoanApi.CustomException.LoanNotFoundException;
 import com.nerd.LoanApi.CustomException.UserNotFoundException;
-import com.nerd.LoanApi.model.Loan;
-import com.nerd.LoanApi.model.OrderBy;
+import com.nerd.LoanApi.model.provider.Loan;
+import com.nerd.LoanApi.model.contract.OrderBy;
 import com.nerd.LoanApi.repository.LoanDao;
 import com.nerd.LoanApi.repository.UserDao;
 import lombok.NonNull;

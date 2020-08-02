@@ -1,6 +1,6 @@
 package com.nerd.LoanApi.repository;
 
-import com.nerd.LoanApi.model.Loan;
+import com.nerd.LoanApi.model.provider.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

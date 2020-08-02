@@ -1,8 +1,8 @@
 package com.nerd.LoanApi.unit.LoanService.bdd;
 
 import com.nerd.LoanApi.CustomException.UserNotFoundException;
-import com.nerd.LoanApi.model.Loan;
-import com.nerd.LoanApi.model.User;
+import com.nerd.LoanApi.model.provider.Loan;
+import com.nerd.LoanApi.model.provider.User;
 import com.nerd.LoanApi.repository.LoanDao;
 import com.nerd.LoanApi.repository.UserDao;
 import com.nerd.LoanApi.service.LoanService;
