@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping(value = "users", consumes = "application/json", produces = "application/json")
 public class UserController {
     @Autowired
     private UserDao dao;

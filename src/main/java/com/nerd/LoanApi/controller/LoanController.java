@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("users/{userId}/loans")
+@RequestMapping(value = "users/{userId}/loans", consumes = "application/json", produces = "application/json")
 public class LoanController {
 
     @Autowired
