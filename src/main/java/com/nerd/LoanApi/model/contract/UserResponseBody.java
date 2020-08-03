@@ -20,7 +20,7 @@ public class UserResponseBody {
         List<LoanResponseBody> loanResponseBodies = new ArrayList<>();
 
         this.id = user.getId();
-        this.firstName = user.getLastName();
+        this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         user.getLoans().forEach(loan -> loanResponseBodies.add(new LoanResponseBody(loan)));
         this.loans = loanResponseBodies;
