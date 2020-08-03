@@ -20,8 +20,8 @@ public class LoanController {
     private LoanService loanService;
 
     @GetMapping("")
-    public List<LoanResponseBody> getAllByUserIdAndSorted(@PathVariable("userId") Integer userId, @RequestParam String orderBy) {
-        List<Loan> loans = loanService.getAll(userId, OrderBy.valueOf(orderBy.toUpperCase()));
+    public List<LoanResponseBody> getAllByUserIdAndSorted(@PathVariable("userId") Integer userId, @RequestParam OrderBy orderBy) {
+        List<Loan> loans = loanService.getAll(userId, orderBy);
         List<LoanResponseBody> loanResponseBodies = new ArrayList<>();
 
         loans.forEach(loan -> loanResponseBodies.add(new LoanResponseBody(loan)));
