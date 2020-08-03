@@ -11,8 +11,8 @@
     <groupId>com.nerd</groupId>
     <artifactId>loan-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>LoanAPI</name>
-    <description>Demo project for Spring Boot</description>
+    <name>LoanApi</name>
+    <description>Systems API for loan PostgreSQL database</description>
 
     <properties>
         <java.version>11</java.version>
