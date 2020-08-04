@@ -5,6 +5,8 @@ import com.nerd.LoanApi.model.contract.UserResponseBody;
 import com.nerd.LoanApi.model.provider.User;
 import com.nerd.LoanApi.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -17,17 +19,20 @@ public class UserController {
     private UserDao dao;
 
     @GetMapping("")
-    public List<UserResponseBody> getAll() {
+    public ResponseEntity<List<UserResponseBody>> getAll() {
         List<User> users = dao.findAll();
         List<UserResponseBody> userResponseBodies = new ArrayList<>();
 
         users.forEach(user -> userResponseBodies.add(new UserResponseBody(user)));
-        return userResponseBodies;
+        return new ResponseEntity<>(userResponseBodies, HttpStatus.OK);
     }
 
     @GetMapping("/{userId}")
-    UserResponseBody getById(@PathVariable("userId") Integer userId) {
-        return new UserResponseBody(dao.findById(userId).orElseThrow(UserNotFoundException::new));
+    ResponseEntity<UserResponseBody> getById(@PathVariable("userId") Integer userId) {
+        return new ResponseEntity<>(
+                new UserResponseBody(dao.findById(userId).orElseThrow(UserNotFoundException::new)),
+                HttpStatus.OK
+        );
     }
 
 }
