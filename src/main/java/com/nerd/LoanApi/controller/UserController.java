@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "users", consumes = "application/json", produces = "application/json")
+@RequestMapping("users")
 public class UserController {
     @Autowired
     private UserDao dao;
 
-    @GetMapping("")
+    @GetMapping(value = "", produces = "application/json")
     public ResponseEntity<List<UserResponseBody>> getAll() {
         List<User> users = dao.findAll();
         List<UserResponseBody> userResponseBodies = new ArrayList<>();
@@ -27,7 +27,7 @@ public class UserController {
         return new ResponseEntity<>(userResponseBodies, HttpStatus.OK);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping(value = "/{userId}", produces = "application/json")
     ResponseEntity<UserResponseBody> getById(@PathVariable("userId") Integer userId) {
         return new ResponseEntity<>(
                 new UserResponseBody(dao.findById(userId).orElseThrow(UserNotFoundException::new)),
