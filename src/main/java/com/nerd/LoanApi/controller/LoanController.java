@@ -48,7 +48,7 @@ public class LoanController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value = "/{loanId}", consumes = "application/json")
+    @DeleteMapping("/{loanId}")
     public ResponseEntity<Void> deleteById(@PathVariable("userId") Integer userId, @PathVariable("loanId") Integer loanId) {
         loanService.deleteLoan(userId, loanId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
