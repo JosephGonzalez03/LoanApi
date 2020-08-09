@@ -5,6 +5,8 @@ import com.nerd.LoanApi.model.provider.User;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +14,16 @@ import java.util.List;
 public class UserResponseBody {
 
     private Integer id;
+
+    @NotBlank
+    @NotNull
     private String firstName;
+
+    @NotBlank
+    @NotNull
     private String lastName;
+
+    @NotNull
     List<LoanResponseBody> loans = new ArrayList<>();
 
     public UserResponseBody(User user) {

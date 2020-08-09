@@ -1,10 +1,12 @@
 package com.nerd.LoanApi.model.contract;
 
 import com.nerd.LoanApi.model.provider.Loan;
-import com.nerd.LoanApi.model.provider.User;
 import lombok.*;
 
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 
 @NoArgsConstructor
@@ -12,15 +14,21 @@ import java.math.BigDecimal;
 public class LoanResponseBody {
 
     private Integer id;
+
+    @NotBlank
+    @NotNull
     private String name;
 
+    @PositiveOrZero
     @Digits(integer=3, fraction=3)
     private BigDecimal interestRate;
 
-    @Digits(integer=3, fraction=2)
+    @PositiveOrZero
+    @Digits(integer=10, fraction=2)
     private BigDecimal outstandingBalance;
 
-    @Digits(integer=3, fraction=2)
+    @PositiveOrZero
+    @Digits(integer=10, fraction=2)
     private BigDecimal contribution;
 
     public LoanResponseBody(Loan loan) {
