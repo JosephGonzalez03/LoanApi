@@ -33,33 +33,4 @@ public class User implements Serializable {
             orphanRemoval = true
     )
     List<Loan> loans = new ArrayList<>();
-
-    public Loan getLoan(Integer loanId) {
-        return getUserLoanById(loanId);
-    }
-
-    public void addLoan(Loan loan) {
-        loan.setUser(this);
-        loans.add(loan);
-    }
-
-    public void updateLoan(Integer loanId, Loan loan) {
-        Loan mLoan = getUserLoanById(loanId);
-
-        mLoan.setName(loan.getName());
-        mLoan.setInterestRate(loan.getInterestRate());
-        mLoan.setOutstandingBalance(loan.getOutstandingBalance());
-        mLoan.setContribution(loan.getContribution());
-    }
-
-    public void deleteLoan(Integer loanId) {
-        loans.remove(getUserLoanById(loanId));
-    }
-
-    private Loan getUserLoanById(Integer loanId) {
-        Loan mLoan = new Loan();
-        mLoan.setId(loanId);
-
-        return loans.get(loans.indexOf(mLoan));
-    }
 }
