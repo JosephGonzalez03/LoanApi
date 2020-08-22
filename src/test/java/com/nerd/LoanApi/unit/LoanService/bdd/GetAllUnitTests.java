@@ -110,6 +110,6 @@ public class GetAllUnitTests {
                 .should(times(1))
                 .findByUserIdOrderByName(1);
 
-        Assert.assertEquals(expected, null);
+        Assert.assertEquals(expected, actual);
     }
 }
