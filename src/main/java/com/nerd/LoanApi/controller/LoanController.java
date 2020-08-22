@@ -32,7 +32,7 @@ public class LoanController {
     }
 
     @PostMapping(value = "", consumes = "application/json")
-    public ResponseEntity<Void> createLoan(@PathVariable("userId") Integer userId, @RequestBody LoanRequestBody loanRequestBody) {
+    public ResponseEntity<Void> createLoan(@PathVariable("userId") Integer userId, @Valid @RequestBody LoanRequestBody loanRequestBody) {
         loanService.addLoan(userId, new Loan(userId, loanRequestBody));
         return new ResponseEntity(HttpStatus.CREATED);
     }
@@ -44,7 +44,7 @@ public class LoanController {
     }
 
     @PutMapping(value = "/{loanId}", consumes = "application/json")
-    public ResponseEntity<Void> updateById(@PathVariable("userId") Integer userId, @PathVariable("loanId") Integer loanId, @RequestBody LoanRequestBody loanRequestBody) {
+    public ResponseEntity<Void> updateById(@PathVariable("userId") Integer userId, @PathVariable("loanId") Integer loanId, @Valid @RequestBody LoanRequestBody loanRequestBody) {
         loanService.updateLoan(userId, loanId, new Loan(userId, loanRequestBody));
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
