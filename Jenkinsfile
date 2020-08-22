@@ -2,7 +2,6 @@ pipeline {
   agent {
     docker {
       image 'maven:3.6.3-jdk-11'
-      args '-v "$HOME"/.m2:/root/.m2 -v "$HOME":/usr/src/mymaven -v "$HOME"/target:/usr/src/mymaven/target -w /usr/src/mymaven maven mvn clean package '
     }
 
   }
