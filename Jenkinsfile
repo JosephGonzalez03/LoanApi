@@ -23,7 +23,7 @@ mvn clean'''
 
     stage('Report') {
       steps {
-        junit 'target/sunfire-reports/**/*.xml '
+        junit 'target/sunfire-reports/*.xml '
         archiveArtifacts 'target/*.jar,target/*.hpi'
       }
     }
