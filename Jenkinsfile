@@ -14,16 +14,22 @@ mvn clean'''
       }
     }
 
-    stage('Build') {
+    stage('Run Unit Tests') {
       steps {
-        sh 'mvn -Dmaven.test.failure.ignore=true install'
+        sh 'mvn -Dmaven.test.failure.ignore=true test'
+      }
+    }
+
+    stage('Build Image') {
+      steps {
+        sh 'mvn -DskipTests spring-boot:build-image'
       }
     }
 
     stage('Report') {
       steps {
         junit 'target/surefire-reports/*.xml '
-        archiveArtifacts 'target/*.jar,target/*.hpi'
+        archiveArtifacts 'target/*.jar'
       }
     }
 
