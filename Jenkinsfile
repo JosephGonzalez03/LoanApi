@@ -10,7 +10,8 @@ pipeline {
       steps {
         sh '''echo PATH=${PATH}
 echo M2_HOME = ${M2_HOME}
-mvn clean'''
+mvn clean
+docker ps -a'''
       }
     }
 
