@@ -22,7 +22,8 @@ mvn clean'''
 
     stage('Build Image') {
       steps {
-        sh 'mvn -DskipTests spring-boot:build-image'
+        sh '''docker --version
+mvn -DskipTests spring-boot:build-image'''
       }
     }
 
