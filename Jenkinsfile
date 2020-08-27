@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'maven:3.6.3-jdk-11'
+      image 'docker:19.03.12'
     }
 
   }
@@ -10,6 +10,7 @@ pipeline {
       steps {
         sh '''echo PATH=${PATH}
 echo M2_HOME = ${M2_HOME}
+docker --version
 mvn clean'''
       }
     }
@@ -22,8 +23,7 @@ mvn clean'''
 
     stage('Build Image') {
       steps {
-        sh '''docker --version
-mvn -DskipTests spring-boot:build-image'''
+        sh 'mvn -DskipTests spring-boot:build-image'
       }
     }
 
