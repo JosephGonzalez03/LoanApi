@@ -13,8 +13,10 @@ services:
 
   loan-api:
     container_name: loan-api
-    image: docker.io/library/loan-api:0.0.1-SNAPSHOT
+    build:
+      context: .
+    image: loan-api:0.0.1-SNAPSHOT
     depends_on:
       - postgres-db
     ports:
-    - "8080:8080"
+    - "8090:8080"
