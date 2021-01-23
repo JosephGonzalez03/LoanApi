@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.nerd</groupId>
-    <artifactId>loan-api</artifactId>
+    <artifactId>loan-system-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>LoanApi</name>
-    <description>Systems API for loan PostgreSQL database</description>
+    <name>loan-system-api</name>
+    <description>System API for loan PostgreSQL database</description>
 
     <properties>
         <java.version>11</java.version>

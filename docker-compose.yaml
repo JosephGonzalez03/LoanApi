@@ -11,11 +11,11 @@ services:
     ports:
     - "5432:5432"
 
-  loan-api:
-    container_name: loan-api
+  loan-system-api:
+    container_name: loan-system-api
     build:
       context: .
-    image: loan-api:0.0.1-SNAPSHOT
+    image: loan-system-api:0.0.1-SNAPSHOT
     depends_on:
       - postgres-db
     ports:
