@@ -23,7 +23,7 @@ public class LoanController {
     private LoanService loanService;
 
     @GetMapping(value = "", produces = "application/json")
-    public ResponseEntity<List<LoanResponseBody>> getAllByUserIdAndSorted(@PathVariable("userId") Integer userId, @RequestParam OrderBy orderBy) {
+    public ResponseEntity<List<LoanResponseBody>> getAllLoansByUserIdAndSorted(@PathVariable("userId") Integer userId, @RequestParam OrderBy orderBy) {
         List<Loan> loans = loanService.getAll(userId, orderBy);
         List<LoanResponseBody> loanResponseBodies = new ArrayList<>();
 
@@ -38,19 +38,19 @@ public class LoanController {
     }
 
     @GetMapping(value = "/{loanId}", produces = "application/json")
-    private ResponseEntity<LoanResponseBody> getById(@PathVariable("userId") Integer userId, @PathVariable("loanId") Integer loanId) {
+    private ResponseEntity<LoanResponseBody> getLoanById(@PathVariable("userId") Integer userId, @PathVariable("loanId") Integer loanId) {
         Loan loan = loanService.getLoan(userId, loanId);
         return new ResponseEntity<>(new LoanResponseBody(loan), HttpStatus.OK);
     }
 
     @PutMapping(value = "/{loanId}", consumes = "application/json")
-    public ResponseEntity<Void> updateById(@PathVariable("userId") Integer userId, @PathVariable("loanId") Integer loanId, @Valid @RequestBody LoanRequestBody loanRequestBody) {
+    public ResponseEntity<Void> updateLoanById(@PathVariable("userId") Integer userId, @PathVariable("loanId") Integer loanId, @Valid @RequestBody LoanRequestBody loanRequestBody) {
         loanService.updateLoan(userId, loanId, new Loan(userId, loanRequestBody));
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{loanId}")
-    public ResponseEntity<Void> deleteById(@PathVariable("userId") Integer userId, @PathVariable("loanId") Integer loanId) {
+    public ResponseEntity<Void> deleteLoanById(@PathVariable("userId") Integer userId, @PathVariable("loanId") Integer loanId) {
         loanService.deleteLoan(userId, loanId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }

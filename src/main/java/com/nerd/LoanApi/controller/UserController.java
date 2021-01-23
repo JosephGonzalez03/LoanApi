@@ -19,7 +19,7 @@ public class UserController {
     private UserDao dao;
 
     @GetMapping(value = "", produces = "application/json")
-    public ResponseEntity<List<UserResponseBody>> getAll() {
+    public ResponseEntity<List<UserResponseBody>> getAllUsers() {
         List<User> users = dao.findAll();
         List<UserResponseBody> userResponseBodies = new ArrayList<>();
 
@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/{userId}", produces = "application/json")
-    ResponseEntity<UserResponseBody> getById(@PathVariable("userId") Integer userId) {
+    ResponseEntity<UserResponseBody> getUserById(@PathVariable("userId") Integer userId) {
         return new ResponseEntity<>(
                 new UserResponseBody(dao.findById(userId).orElseThrow(UserNotFoundException::new)),
                 HttpStatus.OK
