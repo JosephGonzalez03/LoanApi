@@ -1,6 +1,5 @@
 server:
-  servlet:
-    context-path: "/loanms"
+  port: "8090"
 
 spring:
   jpa:
