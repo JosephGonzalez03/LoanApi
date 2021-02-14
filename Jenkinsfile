@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-    JENKINS_API_KEY = credentials('jenkins_api_key')
-  }
   stages {
 //     stage('Initialize') {
 //       steps {
@@ -26,6 +23,9 @@ pipeline {
 //       }
 //     }
     stage('Run Contract Tests') {
+      environment {
+        JENKINS_API_KEY = credentials('jenkins_api_key')
+      }
       steps {
         sh 'echo $JENKINS_API_KEY'
         sh 'curl --location --request GET \'https://api.getpostman.com/environments/85a071d0-0382-499d-a27d-e8c701c9d0fe\' \
