@@ -28,7 +28,7 @@ pipeline {
             --header \'X-Api-Key: ${jenkins_api_key}\' > env.json'
         sh 'curl --location --request GET \'https://api.getpostman.com/collections/58ad80b5-0e3d-4018-a0f4-f1bb12ae546b\' \
             --header \'X-Api-Key: ${jenkins_api_key}\' > contract_tests_collection.json'
-        sh 'docker run -t postman/newman_alpine33:5.2.0 run "contract_tests_collection.json" --environment="env.json"'
+        sh 'docker -v $WORKSPACE:/etc/newman run -t postman/newman_alpine33:5.2.0 run "contract_tests_collection.json" --environment="env.json"'
       }
     }
   }
