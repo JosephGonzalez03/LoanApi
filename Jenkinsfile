@@ -24,6 +24,7 @@ pipeline {
 //     }
     stage('Run Contract Tests') {
       steps {
+        sh 'echo ${jenkins_api_key}'
         sh 'curl --location --request GET \'https://api.getpostman.com/environments/85a071d0-0382-499d-a27d-e8c701c9d0fe\' \
             --header \'X-Api-Key: ${jenkins_api_key}\' > env.json'
         sh 'curl --location --request GET \'https://api.getpostman.com/collections/58ad80b5-0e3d-4018-a0f4-f1bb12ae546b\' \
