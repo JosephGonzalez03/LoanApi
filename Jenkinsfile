@@ -5,7 +5,7 @@ pipeline {
     }
 
   }
-//   stages {
+  stages {
 //     stage('Initialize') {
 //       steps {
 //         sh '''echo PATH=${PATH}
