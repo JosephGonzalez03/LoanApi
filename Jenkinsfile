@@ -32,6 +32,7 @@ pipeline {
             run "contract_tests_collection.json" \
             --environment="env.json" \
             --reporters="cli" \
+            --color="off" \
             --disable-unicode'
       }
     }
