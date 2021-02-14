@@ -28,7 +28,7 @@ pipeline {
             --header \'X-Api-Key: PMAK-600b53d7f9fc0700308169cd-d3e42ef5fea34b2f33d3d93a91f607b2e7\' > env.json'
         sh 'curl --location --request GET \'https://api.getpostman.com/collections/58ad80b5-0e3d-4018-a0f4-f1bb12ae546b\' \
             --header \'X-Api-Key: PMAK-600b53d7f9fc0700308169cd-d3e42ef5fea34b2f33d3d93a91f607b2e7\' > contract_tests_collection.json'
-        sh 'docker run -t postman/newman_alpine33:5.2.0 run contract_tests_collection.json -e env.json'
+        sh 'newman run contract_tests_collection.json -e env.json'
       }
     }
   }
