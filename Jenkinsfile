@@ -31,7 +31,8 @@ pipeline {
         sh 'docker run -v $WORKSPACE:/etc/newman -t postman/newman_alpine33:5.2.0 \
             run "contract_tests_collection.json" \
             --environment="env.json" \
-            --reporters="cli"'
+            --reporters="cli" \
+            --disable-unicode'
       }
     }
   }
