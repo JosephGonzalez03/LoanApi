@@ -29,10 +29,10 @@ pipeline {
       steps {
         sh 'echo $JENKINS_API_KEY'
         sh '''
-            curl --location --request GET 'https://api.getpostman.com/environments/85a071d0-0382-499d-a27d-e8c701c9d0fe' \
-            --header 'X-Api-Key: ' $JENKINS_API_KEY > env.json
-            curl --location --request GET 'https://api.getpostman.com/collections/58ad80b5-0e3d-4018-a0f4-f1bb12ae546b' \
-            --header 'X-Api-Key: ' $JENKINS_API_KEY > contract_tests_collection.json
+            curl --location --request GET https://api.getpostman.com/environments/85a071d0-0382-499d-a27d-e8c701c9d0fe \
+            --header X-Api-Key: $JENKINS_API_KEY > env.json
+            curl --location --request GET https://api.getpostman.com/collections/58ad80b5-0e3d-4018-a0f4-f1bb12ae546b \
+            --header X-Api-Key:  $JENKINS_API_KEY > contract_tests_collection.json
         '''
 //         sh 'curl --location --request GET \'https://api.getpostman.com/environments/85a071d0-0382-499d-a27d-e8c701c9d0fe\' \
 //             --header \'X-Api-Key:' + '${JENKINS_API_KEY}' + '\' > env.json'
