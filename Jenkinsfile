@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'postman/newman_alpine33:5.2.0'
-    }
-
-  }
+  agent any
   stages {
 //     stage('Initialize') {
 //       steps {
