@@ -1,27 +1,27 @@
 pipeline {
   agent any
   stages {
-//     stage('Initialize') {
-//       steps {
-//         sh '''echo PATH=${PATH}
-// echo M2_HOME = ${M2_HOME}
-// docker --version
-// mvn clean'''
-//       }
-//     }
+    stage('Initialize') {
+      steps {
+        sh '''echo PATH=${PATH}
+echo M2_HOME = ${M2_HOME}
+docker --version
+mvn clean'''
+      }
+    }
 
-//     stage('Run Unit Tests') {
-//       steps {
-//         sh 'mvn -Dmaven.test.failure.ignore=true test'
-//       }
-//     }
-//
-//     stage('Report') {
-//       steps {
-//         junit 'target/surefire-reports/*.xml '
-//         archiveArtifacts 'target/*.jar'
-//       }
-//     }
+    stage('Run Unit Tests') {
+      steps {
+        sh 'mvn -Dmaven.test.failure.ignore=true test'
+      }
+    }
+
+    stage('Report') {
+      steps {
+        junit 'target/surefire-reports/*.xml '
+        archiveArtifacts 'target/*.jar'
+      }
+    }
     stage('Run Contract Tests') {
       environment {
         JENKINS_API_KEY = credentials('jenkins_api_key')
