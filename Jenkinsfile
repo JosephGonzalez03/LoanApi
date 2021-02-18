@@ -20,8 +20,10 @@ pipeline {
       }
     }
 
-    stage('Deploy with Docker-Compose') {
+    stage('Start Containers with Docker-Compose') {
         steps {
+            sh 'docker container prune --force'
+            sh 'docker-compose build'
             sh 'docker-compose up -d'
         }
     }
