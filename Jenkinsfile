@@ -1,18 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage('Initialize') {
-      steps {
-        sh '''echo PATH=${PATH}
-echo M2_HOME = ${M2_HOME}
-docker --version
-mvn clean'''
-      }
-    }
+//     stage('Initialize') {
+//       steps {
+//         sh '''echo PATH=${PATH}
+// echo M2_HOME = ${M2_HOME}
+// docker --version
+// mvn clean'''
+//       }
+//     }
 
     stage('Run Unit Tests') {
       steps {
-        sh 'mvn -Dmaven.test.failure.ignore=true test'
+        sh 'docker run --rm -v "$HOME/.m2":/root/.m2 -v $WORKSPACE:/usr/maven/src/mymaven -w /usr/maven/src/mymaven maven mvn -Dmaven.test.failure.ignore=true test'
+        //sh 'mvn -Dmaven.test.failure.ignore=true test'
       }
     }
 
@@ -31,7 +32,7 @@ mvn clean'''
             -H 'X-Api-Key: ${env.JENKINS_API_KEY}' > env.json"
         sh "curl -L -X GET 'https://api.getpostman.com/collections/58ad80b5-0e3d-4018-a0f4-f1bb12ae546b' \
             -H 'X-Api-Key: ${env.JENKINS_API_KEY}' > contract_tests_collection.json"
-        sh 'docker run --expose 8090 --network host -v $WORKSPACE:/etc/newman -t postman/newman_alpine33:5.2.0 \
+        sh 'docker run --rm --expose 8090 --network host -v $WORKSPACE:/etc/newman -t postman/newman_alpine33:5.2.0 \
             run "contract_tests_collection.json" \
             --environment="env.json" \
             --reporters="cli" \
