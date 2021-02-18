@@ -12,7 +12,11 @@ pipeline {
 
     stage('Run Unit Tests') {
       steps {
-        sh 'docker run --rm -v "$HOME/.m2":/root/.m2 -v $WORKSPACE:/usr/maven/src/mymaven -w /usr/maven/src/mymaven maven mvn -Dmaven.test.failure.ignore=true test'
+        sh 'docker run --rm \
+            -v "$HOME/.m2":/root/.m2 \
+            -v $WORKSPACE:/usr/maven/src/mymaven \
+            -w /usr/maven/src/mymaven \
+            maven mvn -Dmaven.test.failure.ignore=true test'
         //sh 'mvn -Dmaven.test.failure.ignore=true test'
       }
     }
