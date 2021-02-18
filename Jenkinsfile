@@ -50,5 +50,10 @@ pipeline {
             --disable-unicode'
       }
     }
+
+    stage('Stop Containers and Clean Up') {
+        sh 'docker-compose down'
+        sh 'docker container prune --force'
+    }
   }
 }
