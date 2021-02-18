@@ -17,12 +17,12 @@ pipeline {
       }
     }
 
-    stage('Report') {
-      steps {
-        junit 'target/surefire-reports/*.xml '
-        archiveArtifacts 'target/*.jar'
-      }
-    }
+//     stage('Report') {
+//       steps {
+//         junit 'target/surefire-reports/*.xml '
+//         archiveArtifacts 'target/*.jar'
+//       }
+//     }
     stage('Run Contract Tests') {
       environment {
         JENKINS_API_KEY = credentials('jenkins_api_key')
