@@ -22,7 +22,7 @@ pipeline {
 
     stage('Deploy with Docker-Compose') {
         steps {
-            sh 'docker-compose build'
+            sh 'docker-compose up -d'
         }
     }
 //     stage('Report') {
