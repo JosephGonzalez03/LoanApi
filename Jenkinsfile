@@ -52,8 +52,10 @@ pipeline {
     }
 
     stage('Docker-Compose Cleanup') {
-      sh 'docker-compose down'
-      sh 'docker container prune --force'
+      steps {
+        sh 'docker-compose down'
+        sh 'docker container prune --force'
+      }
     }
   }
 }
