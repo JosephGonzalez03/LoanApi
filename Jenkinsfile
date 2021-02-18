@@ -9,6 +9,11 @@ pipeline {
 // mvn clean'''
 //       }
 //     }
+    stage('Deploy with Docker-Compose') {
+        steps {
+            sh 'docker-compose build'
+        }
+    }
 
     stage('Run Unit Tests') {
       steps {
