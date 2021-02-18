@@ -21,11 +21,11 @@ pipeline {
     }
 
     stage('Docker-Compose Setup') {
-        steps {
-            sh 'docker container prune --force'
-            sh 'docker-compose build'
-            sh 'docker-compose up -d'
-        }
+      steps {
+        sh 'docker container prune --force'
+        sh 'docker-compose build'
+        sh 'docker-compose up -d'
+      }
     }
 //     stage('Report') {
 //       steps {
@@ -52,8 +52,8 @@ pipeline {
     }
 
     stage('Docker-Compose Cleanup') {
-        sh 'docker-compose down'
-        sh 'docker container prune --force'
+      sh 'docker-compose down'
+      sh 'docker container prune --force'
     }
   }
 }
