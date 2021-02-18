@@ -9,12 +9,6 @@ pipeline {
 // mvn clean'''
 //       }
 //     }
-    stage('Deploy with Docker-Compose') {
-        steps {
-            sh 'docker-compose build'
-        }
-    }
-
     stage('Run Unit Tests') {
       steps {
         sh 'docker run --rm \
@@ -26,6 +20,11 @@ pipeline {
       }
     }
 
+    stage('Deploy with Docker-Compose') {
+        steps {
+            sh 'docker-compose build'
+        }
+    }
 //     stage('Report') {
 //       steps {
 //         junit 'target/surefire-reports/*.xml '
