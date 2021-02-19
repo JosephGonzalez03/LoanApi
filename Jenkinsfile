@@ -25,6 +25,7 @@ pipeline {
         sh 'docker container prune --force'
         sh 'docker-compose build'
         sh 'docker-compose up -d'
+        sh 'sleep 30s'
       }
     }
 //     stage('Report') {
