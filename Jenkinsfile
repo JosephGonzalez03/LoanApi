@@ -1,14 +1,6 @@
 pipeline {
   agent any
   stages {
-//     stage('Initialize') {
-//       steps {
-//         sh '''echo PATH=${PATH}
-// echo M2_HOME = ${M2_HOME}
-// docker --version
-// mvn clean'''
-//       }
-//     }
     stage('Run Unit Tests') {
       steps {
         sh 'docker run --rm \
