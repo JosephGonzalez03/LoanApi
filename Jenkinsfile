@@ -11,6 +11,13 @@ pipeline {
       }
     }
 
+//     stage('Report') {
+//       steps {
+//         junit 'target/surefire-reports/*.xml '
+//         archiveArtifacts 'target/*.jar'
+//       }
+//     }
+
     stage('Docker-Compose Setup') {
       steps {
         sh 'docker container prune --force'
@@ -19,12 +26,7 @@ pipeline {
         sh 'sleep 10s'
       }
     }
-//     stage('Report') {
-//       steps {
-//         junit 'target/surefire-reports/*.xml '
-//         archiveArtifacts 'target/*.jar'
-//       }
-//     }
+
     stage('Run Contract Tests') {
       environment {
         JENKINS_API_KEY = credentials('jenkins_api_key')
