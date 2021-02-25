@@ -15,7 +15,7 @@ pipeline {
       steps {
         sh 'docker container prune --force'
         sh 'docker-compose build'
-        sh 'docker-compose up '
+        sh 'docker-compose up -d'
         sh 'sleep 10s'
       }
     }
