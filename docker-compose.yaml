@@ -11,10 +11,12 @@ services:
     ports:
     - "5432:5432"
 
-  loan-api:
-    container_name: loan-api
-    image: docker.io/library/loan-api:0.0.1-SNAPSHOT
+  loan-system-api:
+    container_name: loan-system-api
+    build:
+      context: .
+    image: loan-system-api:0.0.1-SNAPSHOT
     depends_on:
       - postgres-db
     ports:
-    - "8080:8080"
+    - "8090:8090"
