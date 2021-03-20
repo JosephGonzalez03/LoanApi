@@ -18,6 +18,5 @@ services:
     image: loan-system-api:0.0.1-SNAPSHOT
     depends_on:
       - postgres-db
-
     ports:
     - "8090:8090"
