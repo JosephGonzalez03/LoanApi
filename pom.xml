@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.nerd</groupId>
     <artifactId>loan-system-api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>loan-system-api</name>
     <description>System API for loan PostgreSQL database</description>
 
