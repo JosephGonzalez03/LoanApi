@@ -15,7 +15,7 @@ services:
     container_name: loan-system-api
     build:
       context: .
-    image: loan-system-api:0.0.1-SNAPSHOT
+    image: loan-system-api:1.0.1
     depends_on:
       - postgres-db
     ports:
