@@ -3,6 +3,7 @@ properties:
   id:
     type: integer
     format: int32
+    minimum: 0
   firstName:
     type: string
   lastName:

@@ -4,7 +4,16 @@ properties:
     type: string
   interestRate:
     type: number
+    multipleOf: 0.001
+    minimum: 0
+    example: 3.062
   outstandingBalance:
     type: number
+    multipleOf: 0.01
+    minimum: 0
+    example: 100.01
   contribution:
     type: number
+    multipleOf: 0.01
+    minimum: 0
+    example: 20.31
