@@ -9,12 +9,14 @@ get:
       schema:
         type: integer
         format: int32
+        minimum: 0
     - name: loanId
       in: path
       required: true
       schema:
         type: integer
         format: int32
+        minimum: 0
   responses:
     '200':
       description: Loan found
@@ -33,12 +35,14 @@ put:
       schema:
         type: integer
         format: int32
+        minimum: 0
     - name: loanId
       in: path
       required: true
       schema:
         type: integer
         format: int32
+        minimum: 0
   requestBody:
     content:
       application/json:
@@ -58,12 +62,14 @@ delete:
       schema:
         type: integer
         format: int32
+        minimum: 0
     - name: loanId
       in: path
       required: true
       schema:
         type: integer
         format: int32
+        minimum: 0
   responses:
     '204':
       description: Loan deleted
