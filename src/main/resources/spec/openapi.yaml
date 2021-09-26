@@ -9,7 +9,7 @@ servers:
   - url: http://localhost:8090/loanms
     description: local
   - url: http://apis-dev.nerd.com:443/loanms
-    description: development server
+    description: development
 tags:
   - name: users
     description: Operations related to users in the loan database.
