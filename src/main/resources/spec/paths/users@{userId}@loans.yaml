@@ -1,0 +1,49 @@
+get:
+  operationId: getAllLoansByUserIdAndSorted
+  tags: ["loans"]
+  description: "Gets all loans owned by the given user. The retrieved loans are sorted in ascending to desceding order by one of the given fields: name, interest rate, outstanding balance, or contribution."
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+    - name: orderBy
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - NAME
+          - INTEREST_RATE
+          - OUTSTANDING_BALANCE
+          - CONTRIBUTION
+  responses:
+    '200':
+      description: Loans found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/LoanResponseBody.yaml
+post:
+  operationId: createLoan
+  tags: ["loans"]
+  description: "Creates a new loan for the given user."
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/LoanRequestBody.yaml
+  responses:
+    '201':
+      description: Loan created

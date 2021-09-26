@@ -1,0 +1,10 @@
+type: object
+properties:
+  name:
+    type: string
+  interestRate:
+    type: number
+  outstandingBalance:
+    type: number
+  contribution:
+    type: number

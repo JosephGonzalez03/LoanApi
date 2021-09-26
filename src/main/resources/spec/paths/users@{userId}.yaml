@@ -1,0 +1,18 @@
+get:
+  operationId: getUserById
+  tags: ["users"]
+  description: "Gets a given user's details from loan database."
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  responses:
+    '200':
+      description: User found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/UserResponseBody.yaml

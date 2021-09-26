@@ -1,0 +1,21 @@
+openapi: 3.0.1
+info:
+  title: loan-system-api
+  description: System API for loan PostgreSQL database
+  version: 1.0.0
+  license:
+    name: MIT License
+servers:
+  - url: http://localhost:8090/loanms
+    description: local
+  - url: http://apis-dev.nerd.com:443/loanms
+    description: development server
+paths:
+  /users/{userId}/loans/{loanId}:
+    $ref: paths/users@{userId}@loans@{loanId}.yaml
+  /users/{userId}/loans:
+    $ref: paths/users@{userId}@loans.yaml
+  /users:
+    $ref: paths/users.yaml
+  /users/{userId}:
+    $ref: paths/users@{userId}.yaml
