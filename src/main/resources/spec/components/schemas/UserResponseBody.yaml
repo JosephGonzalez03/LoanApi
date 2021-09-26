@@ -12,3 +12,8 @@ properties:
     type: array
     items:
       $ref: ./LoanResponseBody.yaml
+required:
+  - id
+  - firstName
+  - lastName
+  - loans

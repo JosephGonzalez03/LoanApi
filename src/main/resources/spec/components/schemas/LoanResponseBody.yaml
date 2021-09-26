@@ -21,3 +21,9 @@ properties:
     multipleOf: 0.01
     minimum: 0
     example: 20.31
+required:
+  - id
+  - name
+  - interestRate
+  - outstandingBalance
+  - contribution
