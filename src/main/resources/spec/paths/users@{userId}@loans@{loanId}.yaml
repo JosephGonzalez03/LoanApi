@@ -1,6 +1,7 @@
 get:
   operationId: getLoanById
-  tags: ["loans"]
+  tags:
+    - loans
   description: "Gets a given loan's details that's owned by a given user."
   parameters:
     - name: userId
@@ -26,7 +27,8 @@ get:
             $ref: ../components/schemas/LoanResponseBody.yaml
 put:
   operationId: updateLoanById
-  tags: ["loans"]
+  tags:
+    - loans
   description: "Updates a given loan's details that's owned by a given user."
   parameters:
     - name: userId
@@ -53,7 +55,8 @@ put:
       description: Loan updated
 delete:
   operationId: deleteLoanById
-  tags: ["loans"]
+  tags:
+    - loans
   description: "Deletes a given loan that's owned by a given user in the loan database."
   parameters:
     - name: userId

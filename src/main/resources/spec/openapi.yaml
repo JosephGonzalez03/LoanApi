@@ -10,6 +10,11 @@ servers:
     description: local
   - url: http://apis-dev.nerd.com:443/loanms
     description: development server
+tags:
+  - name: users
+    description: Operations related to users in the loan database.
+  - name: loans
+    description: Operations related to loans in the loan database.
 paths:
   /users/{userId}/loans/{loanId}:
     $ref: paths/users@{userId}@loans@{loanId}.yaml

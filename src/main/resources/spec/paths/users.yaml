@@ -1,6 +1,7 @@
 get:
   operationId: getAllUsers
-  tags: ["users"]
+  tags:
+    - users
   description: "Gets all users in loan database."
   responses:
     '200':

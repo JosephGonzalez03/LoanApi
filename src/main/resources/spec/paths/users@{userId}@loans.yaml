@@ -1,6 +1,7 @@
 get:
   operationId: getAllLoansByUserIdAndSorted
-  tags: ["loans"]
+  tags:
+    - loans
   description: "Gets all loans owned by the given user. The retrieved loans are sorted in ascending to desceding order by one of the given fields: name, interest rate, outstanding balance, or contribution."
   parameters:
     - name: userId
@@ -31,7 +32,8 @@ get:
               $ref: ../components/schemas/LoanResponseBody.yaml
 post:
   operationId: createLoan
-  tags: ["loans"]
+  tags:
+    - loans
   description: "Creates a new loan for the given user."
   parameters:
     - name: userId
