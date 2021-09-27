@@ -2,7 +2,10 @@ get:
   operationId: getAllLoansByUserIdAndSorted
   tags:
     - loans
-  description: "Gets all loans owned by the given user. The retrieved loans are sorted in ascending to desceding order by one of the given fields: name, interest rate, outstanding balance, contribution."
+  description: |
+    "Gets all loans owned by the given user. The retrieved loans are sorted in ascending to
+    desceding order by one of the given fields: name, interest rate, outstanding balance,
+    contribution."
   parameters:
     - name: userId
       in: path
