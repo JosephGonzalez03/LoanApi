@@ -4,6 +4,7 @@ info:
   version: 1.0.1
   license:
     name: MIT License
+    url: https://mit-license.org/
   description: |
     # Introduction
     This is a system API that integrates with a PostgreSQL database. The database stores information
