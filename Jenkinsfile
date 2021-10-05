@@ -25,7 +25,7 @@ pipeline {
               api_name=${job_name%/feature*}
               echo $api_name
               docker run --rm \
-                  -v $WORKSPACE/$api_name/src/main/resources/spec/:/spec \
+                  -v $WORKSPACE/src/main/resources/spec/:/spec \
                   redocly/openapi-cli lint openapi.yaml --skip-rule=operation-summary
           '''
         }
