@@ -20,7 +20,11 @@ pipeline {
 
     stage('Lint API Specification') {
         steps {
-          sh 'echo $JOB_NAME'
+          sh '''
+          job_name=$JOB_NAME
+          api_name=${job_name%/}
+          echo $api_name
+          '''
 //        sh 'dcoker run --rm \
 //            -v $WORKSPACE/src/main/resources/spec/:/spec \
 //            redocly/openapi-cli lint openapi.yaml --skip-rule=operation-summary
