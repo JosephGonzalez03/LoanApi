@@ -18,6 +18,13 @@ pipeline {
 //       }
 //     }
 
+    stage('Lint API Specification') {
+          sh '$JOB_NAME'
+//        sh 'dcoker run --rm \
+//            -v $WORKSPACE/src/main/resources/spec/:/spec \
+//            redocly/openapi-cli lint openapi.yaml --skip-rule=operation-summary
+}
+
     stage('Docker-Compose Setup') {
       steps {
         sh 'docker container prune --force'
