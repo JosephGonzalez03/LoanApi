@@ -22,7 +22,7 @@ pipeline {
         steps {
           sh '''
           job_name=$JOB_NAME
-          api_name=${job_name%/}
+          api_name=${job_name%/feature*}
           echo $api_name
           '''
 //        sh 'dcoker run --rm \
