@@ -19,6 +19,28 @@ tags:
     description: Operations related to users in the loan database.
   - name: loans
     description: Operations related to loans in the loan database.
+  - name: loan_reqeust_schema
+    x-displayName: Loan Request Schema
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/LoanRequestBody" />
+  - name: loan_response_schema
+    x-displayName: Loan Response Schema
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/LoanResponseBody" />
+  - name: user_response_schema
+    x-displayName: User Response Schema
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/UserResponseBody" />
+x-tagGroups:
+  - name: General
+    tags:
+      - users
+      - loans
+  - name: Schemas
+    tags:
+      - loan_reqeust_schema
+      - loan_response_schema
+      - user_response_schema
 paths:
   /users/{userId}/loans/{loanId}:
     $ref: paths/users@{userId}@loans@{loanId}.yaml
