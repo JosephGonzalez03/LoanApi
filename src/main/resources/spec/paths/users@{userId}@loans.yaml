@@ -4,9 +4,9 @@ get:
     - loans
   summary: "Get all loan by user and sorted by loan field"
   description: |
-    "Gets all loans owned by the given user. The retrieved loans are sorted in ascending to
-    desceding order by one of the given fields: name, interest rate, outstanding balance,
-    contribution."
+    Gets all loans owned by the given user. The retrieved loans are sorted in ascending to
+    desceding order by one of the loan fields (name, interest rate, outstanding balance,
+    contribution).
   parameters:
     - name: userId
       in: path
