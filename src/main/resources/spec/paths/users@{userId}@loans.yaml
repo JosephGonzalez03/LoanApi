@@ -2,7 +2,7 @@ get:
   operationId: getAllLoansByUserIdAndSorted
   tags:
     - loans
-  summary: "Get all loan by user and sorted by loan field"
+  summary: Get all loan by user and sorted by loan field
   description: |
     Gets all loans owned by the given user. The retrieved loans are sorted in ascending to
     desceding order by one of the loan fields (name, interest rate, outstanding balance,
@@ -38,8 +38,8 @@ post:
   operationId: createLoan
   tags:
     - loans
-  summary: "Create new loan for user"
-  description: "Creates a new loan for the given user."
+  summary: Create new loan for user
+  description: Creates a new loan for the given user.
   parameters:
     - name: userId
       in: path

@@ -2,8 +2,8 @@ get:
   operationId: getLoanById
   tags:
     - loans
-  summary: "Get loan by id"
-  description: "Gets a given loan's details that's owned by a given user."
+  summary: Get loan by id
+  description: Gets a given loan's details that's owned by a given user.
   parameters:
     - name: userId
       in: path
@@ -30,8 +30,8 @@ put:
   operationId: updateLoanById
   tags:
     - loans
-  summary: "Update loan by id"
-  description: "Updates a given loan's details that's owned by a given user."
+  summary: Update loan by id
+  description: Updates a given loan's details that's owned by a given user.
   parameters:
     - name: userId
       in: path
@@ -59,8 +59,8 @@ delete:
   operationId: deleteLoanById
   tags:
     - loans
-  summary: "Delete loan by id"
-  description: "Deletes a given loan that's owned by a given user in the loan database."
+  summary: Delete loan by id
+  description: Deletes a given loan that's owned by a given user in the loan database.
   parameters:
     - name: userId
       in: path
