@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sh 'docker run --rm \
                     -v $WORKSPACE/src/main/resources/spec/:/spec \
-                    redocly/openapi-cli lint openapi.yaml --skip-rule=operation-summary'
+                    redocly/openapi-cli lint openapi.yaml'
             }
         }
     }

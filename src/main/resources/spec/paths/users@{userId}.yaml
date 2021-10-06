@@ -2,6 +2,7 @@ get:
   operationId: getUserById
   tags:
     - users
+  summary: "Get user by id"
   description: "Gets a given user's details from loan database."
   parameters:
     - name: userId
