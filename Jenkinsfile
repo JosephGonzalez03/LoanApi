@@ -32,8 +32,15 @@ pipeline {
             }
             steps {
                 sh '''
-                    api_name=${JOB_NAME%/*}
-                    echo $api_name
+                    api_image=${JOB_NAME%/*}
+                    tagged_api_image=josephgonzalez03/$api_image:${BRANCH_NAME}
+
+                    docker-compose build
+                    docker tag $api_image $tagged_api_image
+                    docker login -u ${DOCKER_CREDENTIALS_USR} -p ${DOCKER_CREDENTIALS_PSW}
+                    docker push $tagged_api_image
+                    docker logout
+                    docker rmi $api_image $tagged_api_image
                 '''
             }
         }
