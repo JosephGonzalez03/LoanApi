@@ -32,7 +32,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    api_name=${JOB_NAME%/JOB_BASE_NAME}
+                    api_name=${JOB_NAME%/*}
                     echo $api_name
                 '''
             }
