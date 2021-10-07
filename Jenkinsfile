@@ -31,7 +31,7 @@ pipeline {
                 DOCKER_CREDENTIALS = credentials('docker_credentials')
             }
             steps {
-                sh 'api_name=${${JOB_NAME}%/${JOB_BASE_NAME}}'
+                sh 'api_name=${JOB_NAME%/JOB_BASE_NAME}'
                 sh 'echo $api_name'
             }
         }
