@@ -25,5 +25,10 @@ pipeline {
                     redocly/openapi-cli lint openapi.yaml'
             }
         }
+
+        stage('Tag Docker Image & Publish to Docker Hub')
+            steps {
+                sh 'printenv'
+            }
     }
 }
