@@ -37,10 +37,10 @@ pipeline {
                 DOCKER_CREDENTIALS = credentials('docker_credentials')
             }
             steps {
-                sh '''
-                    api_image=${JOB_NAME%/*}
-                    tagged_api_image=${DOCKER_CREDENTIALS_USR}/$api_image:${BRANCH_NAME}
+                def api_image = ${JOB_NAME}.split("/")
+                def tagged_api_image = '${DOCKER_CREDENTIALS_USR}/${api_image}:${BRANCH_NAME}'
 
+                sh '''
                     docker-compose build
                     docker tag $api_image $tagged_api_image
                     echo ${DOCKER_CREDENTIALS_PSW} | docker login -u ${DOCKER_CREDENTIALS_USR} --password-stdin
