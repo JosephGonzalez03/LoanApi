@@ -37,7 +37,7 @@ pipeline {
 
                     docker-compose build
                     docker tag $api_image $tagged_api_image
-                    docker login -u ${DOCKER_CREDENTIALS_USR} -p ${DOCKER_CREDENTIALS_PSW}
+                    ${DOCKER_CREDENTIALS_PSW} | docker login -u ${DOCKER_CREDENTIALS_USR} --password-stdin
                     docker push $tagged_api_image
                     docker logout
                     docker rmi $api_image $tagged_api_image
