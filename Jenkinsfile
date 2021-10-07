@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    environment {
+        GIT_COMMIT_SUBJECT = sh(
+            script: "git log --pretty=format:'%s' -n 1 ${GIT_COMMIT}"
+            returnStdout: true
+        )
+    }
     stages {
         stage('Lint API Specification') {
             steps {
@@ -32,6 +38,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    ${GIT_COMMIT_SUBJECT}
                     api_image=${JOB_NAME%/*}
                     tagged_api_image=josephgonzalez03/$api_image:${BRANCH_NAME}
 
