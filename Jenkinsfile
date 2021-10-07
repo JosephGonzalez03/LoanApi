@@ -39,7 +39,7 @@ pipeline {
             steps {
                 sh '''
                     api_image=${JOB_NAME%/*}
-                    tagged_api_image=josephgonzalez03/$api_image:${BRANCH_NAME}
+                    tagged_api_image=${DOCKER_CREDENTIALS_USR}/$api_image:${BRANCH_NAME}
 
                     docker-compose build
                     docker tag $api_image $tagged_api_image
