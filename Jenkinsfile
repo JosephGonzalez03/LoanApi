@@ -38,7 +38,6 @@ pipeline {
             }
             steps {
                 sh '''
-                    ${GIT_COMMIT_SUBJECT}
                     api_image=${JOB_NAME%/*}
                     tagged_api_image=josephgonzalez03/$api_image:${BRANCH_NAME}
 
