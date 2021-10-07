@@ -27,8 +27,12 @@ pipeline {
         }
 
         stage('Tag Docker Image & Publish to Docker Hub') {
+            environement {
+                DOCKER_CREDENTIALS = credentials('docker_credentials')
+            }
             steps {
-                sh 'printenv'
+                sh 'api_name=${${JOB_NAME}%/${JOB_BASE_NAME}}'
+                sh 'echo $api_name'
             }
         }
     }
