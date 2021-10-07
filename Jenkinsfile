@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         GIT_COMMIT_SUBJECT = sh(
-            script: "git log --pretty=format:'%s' -n 1 ${GIT_COMMIT}"
+            script: "git log --pretty=format:'%s' -n 1 ${GIT_COMMIT}",
             returnStdout: true
         )
     }
