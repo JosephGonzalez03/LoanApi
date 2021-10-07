@@ -1,6 +1,14 @@
 pipeline {
     agent any
     stages {
+        stage('Lint API Specification') {
+            steps {
+                sh 'docker run --rm \
+                    -v $WORKSPACE/src/main/resources/spec/:/spec \
+                    redocly/openapi-cli lint openapi.yaml'
+            }
+        }
+
         stage('Run Unit Tests') {
             steps {
                 sh 'docker run --rm \
@@ -15,14 +23,6 @@ pipeline {
             steps {
                 junit 'target/surefire-reports/*.xml '
                 archiveArtifacts 'target/*.jar'
-            }
-        }
-
-        stage('Lint API Specification') {
-            steps {
-                sh 'docker run --rm \
-                    -v $WORKSPACE/src/main/resources/spec/:/spec \
-                    redocly/openapi-cli lint openapi.yaml'
             }
         }
 
