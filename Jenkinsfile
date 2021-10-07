@@ -30,5 +30,6 @@ pipeline {
             steps {
                 sh 'printenv'
             }
+        }
     }
 }
