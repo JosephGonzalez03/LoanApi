@@ -26,7 +26,7 @@ pipeline {
             }
         }
 
-        stage('Tag Docker Image & Publish to Docker Hub')
+        stage('Tag Docker Image & Publish to Docker Hub') {
             steps {
                 sh 'printenv'
             }
