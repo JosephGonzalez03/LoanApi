@@ -1,11 +1,5 @@
 pipeline {
     agent any
-    environment {
-        GIT_COMMIT_SUBJECT = sh(
-            script: "git log --pretty=format:'%s' -n 1 ${GIT_COMMIT}",
-            returnStdout: true
-        )
-    }
     stages {
         stage('Lint API Specification') {
             steps {
