@@ -1,0 +1,19 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int32
+    minimum: 0
+  firstName:
+    type: string
+  lastName:
+    type: string
+  loans:
+    type: array
+    items:
+      $ref: ./LoanResponseBody.yaml
+required:
+  - id
+  - firstName
+  - lastName
+  - loans

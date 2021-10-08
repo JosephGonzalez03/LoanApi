@@ -1,0 +1,81 @@
+get:
+  operationId: getLoanById
+  tags:
+    - loans
+  summary: Get loan by id
+  description: Gets a given loan's details that's owned by a given user.
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+    - name: loanId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+  responses:
+    '200':
+      description: Loan found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/LoanResponseBody.yaml
+put:
+  operationId: updateLoanById
+  tags:
+    - loans
+  summary: Update loan by id
+  description: Updates a given loan's details that's owned by a given user.
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+    - name: loanId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/LoanRequestBody.yaml
+  responses:
+    '204':
+      description: Loan updated
+delete:
+  operationId: deleteLoanById
+  tags:
+    - loans
+  summary: Delete loan by id
+  description: Deletes a given loan that's owned by a given user in the loan database.
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+    - name: loanId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+  responses:
+    '204':
+      description: Loan deleted

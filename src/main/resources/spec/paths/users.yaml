@@ -1,0 +1,15 @@
+get:
+  operationId: getAllUsers
+  tags:
+    - users
+  summary: Get all users
+  description: Gets all users in loan database.
+  responses:
+    '200':
+      description: Users found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/UserResponseBody.yaml
