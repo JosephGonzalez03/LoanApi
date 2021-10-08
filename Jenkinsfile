@@ -33,6 +33,9 @@ pipeline {
         }
 
         stage('Tag Docker Image & Publish to Docker Hub') {
+            when {
+                changelog "--tag-image"
+            }
             environment {
                 DOCKER_CREDENTIALS = credentials('docker_credentials')
             }
